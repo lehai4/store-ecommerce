@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: "Rubik", sans-serif;
+}
+
+@layer utilities {
+  .container {
+    @apply px-4 sm:px-6 lg:px-8;
+    @apply mx-auto;
+    @apply w-full;
+    @apply max-w-[1180px];
+    @apply min-w-[320px];
+    @apply px-4;
+  }
+  @media (min-width: 576px) {
+    .container {
+      @apply max-w-[540px];
+    }
+  }
+  @media (min-width: 768px) {
+    .container {
+      @apply max-w-[720px];
+    }
+  }
+  @media (min-width: 992px) {
+    .container {
+      @apply max-w-[960px];
+    }
+  }
+  @media (min-width: 1200px) {
+    .container {
+      @apply max-w-[1180px];
+    }
+  }
+}
