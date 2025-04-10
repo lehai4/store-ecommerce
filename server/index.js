@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
-// const route = require("./src/routes");
+const router = require("./routers");
 const db = require("./config/db");
 
 //Connect db
@@ -31,7 +31,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //Routes init
-// route(app);
+router(app);
 
 app.get("/home", (req, res) => {
   res.status(200).json("Welcome, your app is working well");
