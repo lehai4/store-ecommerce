@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const userSchema = new mongoose.Schema(
   {
     name: String,
-    password: { type: String },
+    password: String,
     email: String,
     phone: String,
     address: String,
@@ -27,6 +27,7 @@ const categorySchema = new mongoose.Schema(
   {
     IDCategory: String,
     nameCategory: String,
+    description: String,
   },
   { timestamps: true }
 );
@@ -35,7 +36,10 @@ const productSchema = new mongoose.Schema(
   {
     IDProduct: String,
     nameProduct: String,
-    IDCategory: String,
+    IDCategory: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "sync_categories",
+    },
     price: Number,
     color: String,
     size: String,
@@ -50,7 +54,7 @@ const productSchema = new mongoose.Schema(
 // Tạo models
 const User = mongoose.model("sync_users", userSchema);
 const Role = mongoose.model("sync_roles", roleSchema);
-const Category = mongoose.model("sync_categorys", categorySchema);
+const Category = mongoose.model("sync_categories", categorySchema);
 const Product = mongoose.model("sync_products", productSchema);
 
 module.exports = {

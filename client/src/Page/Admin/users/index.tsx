@@ -30,7 +30,7 @@ const UsersAdmin = () => {
       dataIndex: "email",
       key: "email",
       ellipsis: true,
-      width: 150,
+      width: 200,
     },
     {
       title: "Số điện thoại",
@@ -206,7 +206,16 @@ const UsersAdmin = () => {
   if (error) {
     return (
       <div className="flex justify-center items-center h-full">
-        <div className="text-2xl font-bold">Lỗi khi tải dữ liệu</div>
+        <div className="text-2xl font-bold text-red-500">
+          <div className="flex flex-row flex-wrap gap-4">
+            <div className="text-2xl font-bold text-red-500">
+              Lỗi khi tải dữ liệu!
+            </div>
+            <Button type="primary" onClick={() => window.location.reload()}>
+              Tải lại trang
+            </Button>
+          </div>
+        </div>
       </div>
     );
   }
@@ -233,10 +242,13 @@ const UsersAdmin = () => {
         </Button>
         <Table
           columns={columns}
-          dataSource={users}
+          dataSource={users.map((user) => ({
+            ...user,
+            key: user._id,
+          }))}
           pagination={false}
           loading={loading}
-          scroll={{ x: "100%", y: 55 * 5 }}
+          scroll={{ x: "100%", y: "100% " }}
           locale={{
             emptyText: <span>Không có dữ liệu</span>,
           }}

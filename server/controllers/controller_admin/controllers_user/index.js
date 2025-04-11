@@ -1,5 +1,5 @@
-const { User } = require("../../models/index");
-
+const { User } = require("../../../models/index");
+const bcrypt = require("bcrypt");
 const controllerUser = {
   getUsers: async (req, res) => {
     try {
@@ -27,7 +27,16 @@ const controllerUser = {
         });
       }
       console.log(name, email, phone, address, roleId);
-      const user = await User.create({ name, email, phone, address, roleId });
+
+      const hashedPassword = await bcrypt.hash("0123456", 10);
+      const user = { name, email, phone, address, roleId };
+
+      const newUser = new User({
+        ...user,
+        password: hashedPassword,
+      });
+      await newUser.save();
+
       res.status(200).json({
         success: true,
         message: "Thêm người dùng thành công",
