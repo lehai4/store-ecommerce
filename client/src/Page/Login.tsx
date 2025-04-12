@@ -25,6 +25,7 @@ const Login = () => {
         dispatch(setStatusLogin(true));
         dispatch(setUser(response.data));
         dispatch(setStatusLogout(false));
+        toast.success("Đăng nhập thành công");
         navigate("/");
       } else {
         dispatch(setStatusLogin(false));
@@ -96,7 +97,7 @@ const Login = () => {
           name="email"
           rules={[{ required: true, message: "Please input your email!" }]}
         >
-          <Input />
+          <Input size="large" />
         </Form.Item>
 
         <Form.Item
@@ -104,7 +105,7 @@ const Login = () => {
           name="password"
           rules={[{ required: true, message: "Please input your password!" }]}
         >
-          <Input.Password />
+          <Input.Password size="large" />
         </Form.Item>
 
         <Form.Item>

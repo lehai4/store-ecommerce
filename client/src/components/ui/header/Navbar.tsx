@@ -24,10 +24,10 @@ const Navbar = () => {
               }}
             >
               <Menu.Item key="/">Home</Menu.Item>
-              <Menu.Item key="products">Products</Menu.Item>
-              <Menu.Item key="blog">Blog</Menu.Item>
-              <Menu.Item key="about">About</Menu.Item>
-              <Menu.Item key="contact">Contact</Menu.Item>
+              <Menu.Item key="/products">Products</Menu.Item>
+              <Menu.Item key="/blogs">Blog</Menu.Item>
+              <Menu.Item key="/about">About</Menu.Item>
+              <Menu.Item key="/contact">Contact</Menu.Item>
             </Menu>
           </Col>
         </Row>

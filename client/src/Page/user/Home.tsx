@@ -1,9 +1,10 @@
 import { mockAPI } from "@/api/mockAPI";
 import banner from "@/assets/img/banner_background.jpg";
 import { Image, Space } from "antd";
-
+import SendEmail from "./SendEmail";
 const Home = () => {
   const characteristics = mockAPI.characteristics;
+
   return (
     <main className="main">
       <div className="banner w-full py-[68px] relative">
@@ -52,6 +53,7 @@ const Home = () => {
         </div>
       </div>
       <div className="products"></div>
+      <SendEmail />
     </main>
   );
 };

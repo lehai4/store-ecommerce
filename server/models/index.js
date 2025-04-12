@@ -9,7 +9,11 @@ const userSchema = new mongoose.Schema(
     phone: String,
     address: String,
     status: { type: Boolean, default: true },
-    roleId: { type: mongoose.Schema.Types.ObjectId, ref: "sync_roles" },
+    roleId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "sync_roles",
+      default: "67f74338b483b59009dea28a",
+    },
   },
   { timestamps: true }
 );

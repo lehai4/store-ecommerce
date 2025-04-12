@@ -40,6 +40,37 @@ const controllerForUser = {
       });
     }
   },
+  register: async (req, res) => {
+    try {
+      const { name, email, password, phone, address } = req.body;
+      const user = await User.findOne({ email });
+      if (user) {
+        return res.status(400).json({
+          success: false,
+          message: "Email đã tồn tại",
+        });
+      }
+      const hashedPassword = await bcrypt.hash(password, 10);
+      const newUser = new User({
+        name,
+        email,
+        password: hashedPassword,
+        phone,
+        address,
+      });
+      await newUser.save();
+      return res.status(200).json({
+        success: true,
+        message: "Đăng ký thành công",
+        data: newUser,
+      });
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        message: error.message,
+      });
+    }
+  },
 };
 
 module.exports = controllerForUser;

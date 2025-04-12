@@ -12,11 +12,13 @@ import Home from "@/Page/user/Home";
 import Products from "@/Page/user/Products";
 import { RootState } from "@/store/store";
 import { Role } from "@/types/admin";
-import { Button } from "antd";
-import { ArrowLeftOutlined } from "@ant-design/icons";
+import { Button, Spin } from "antd";
+import { ArrowLeftOutlined, LoadingOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import { Outlet, Route, Routes, useNavigate } from "react-router-dom";
-
+import Register from "@/Page/Register";
+import Blog from "@/Page/user/Blog";
+import BlogDetail from "@/components/ui/blogs/BlogDetail";
 export function AppRoutes() {
   const { user } = useAppSelector((state: RootState) => state.authen);
 
@@ -28,7 +30,11 @@ export function AppRoutes() {
 
   const ProtectedRoutes = () => {
     if (loading) {
-      return <div>Loading...</div>;
+      return (
+        <div className="flex justify-center items-center h-screen">
+          <Spin indicator={<LoadingOutlined spin />} />
+        </div>
+      );
     }
 
     return (
@@ -103,6 +109,9 @@ export function AppRoutes() {
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/blogs" element={<Blog />} />
+        <Route path="/blog/:id" element={<BlogDetail />} />
         {/* Add more routes as needed */}
         <Route path="*" element={<NotFound />} />
       </Route>

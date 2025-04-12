@@ -54,12 +54,24 @@ const SubHeader = () => {
                 </div>
               ) : (
                 <>
-                  <Button type="link" icon={<UserAddOutlined />}>
-                    <Link to="/register">Register</Link>
+                  <Button type="link">
+                    <Link
+                      to="/register"
+                      className="flex flex-row items-center gap-2"
+                    >
+                      <UserAddOutlined />
+                      Register
+                    </Link>
                   </Button>
                   <Divider type="vertical" />
-                  <Button type="link" icon={<UserOutlined />}>
-                    <Link to="/login">Login</Link>
+                  <Button type="link">
+                    <Link
+                      to="/login"
+                      className="flex flex-row items-center gap-2"
+                    >
+                      <UserOutlined />
+                      Login
+                    </Link>
                   </Button>
                 </>
               )}
