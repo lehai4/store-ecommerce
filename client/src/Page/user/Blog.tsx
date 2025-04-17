@@ -4,6 +4,7 @@ import { Select, Input, Pagination, Spin } from "antd";
 import { useState, useEffect } from "react";
 import { LoadingOutlined } from "@ant-design/icons";
 import SendEmail from "./SendEmail";
+import shop_background from "@/assets/img/shop_background.jpg";
 const Blog = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [blogs, setBlogs] = useState(mockAPI.blogs);
@@ -38,12 +39,23 @@ const Blog = () => {
   return (
     <div className="blog-page">
       {/* header */}
-      <div className="blog-header bg-gradient-to-r from-blue-500 to-blue-700 py-16">
-        <div className="container mx-auto text-center">
-          <h1 className="text-4xl font-bold text-white mb-4">Our Blog</h1>
-          <p className="text-xl text-white/80">
-            Discover the latest news, tips and user guides
-          </p>
+      <div className="blog-header pb-16">
+        <div className="relative">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent">
+            <div className="container mx-auto h-full">
+              <div className="h-full flex flex-col justify-center items-center w-full md:w-1/2 mx-auto gap-6">
+                <h1 className="text-4xl font-bold text-white mb-4">Our Blog</h1>
+                <p className="text-xl text-white/80">
+                  Discover the latest news, tips and user guides
+                </p>
+              </div>
+            </div>
+          </div>
+          <img
+            src={shop_background}
+            alt="blog"
+            className="w-full h-full object-cover"
+          />
         </div>
       </div>
       {/* content */}

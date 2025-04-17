@@ -3,7 +3,7 @@ import {
   SearchOutlined,
   ShoppingCartOutlined,
 } from "@ant-design/icons";
-import { Col, Row, Space } from "antd";
+import { Col, Popover, Row, Space } from "antd";
 import Link from "antd/es/typography/Link";
 
 const MainHeader = () => {
@@ -22,22 +22,30 @@ const MainHeader = () => {
                   SoaFStore
                 </Link>
                 <div className="flex md:hidden items-center gap-8">
-                  <div className="flex items-center gap-2">
-                    <HeartOutlined className="text-[34px]" />
-                    {/* <span className="text-gray-500">110</span> */}
-                    <Space direction="vertical" className="!gap-0">
-                      <span className="text-[18px] font-medium">Wishlist</span>
-                      <span className="text-[14px] text-gray-500">110</span>
-                    </Space>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <ShoppingCartOutlined className="text-[34px]" />
-                    {/* <span className="text-gray-500">$100</span> */}
-                    <Space direction="vertical" className="!gap-0">
-                      <span className="text-[18px] font-medium">Cart</span>
-                      <span className="text-[14px] text-gray-500">$100</span>
-                    </Space>
-                  </div>
+                  <Popover
+                    content={<div>No wishlist</div>}
+                    placement="bottomRight"
+                  >
+                    <div className="flex items-center gap-2">
+                      <HeartOutlined className="text-[34px]" />
+                      <Space direction="vertical" className="!gap-0">
+                        <span className="text-[18px] font-medium">
+                          Wishlist
+                        </span>
+                        <span className="text-[14px] text-gray-500">110</span>
+                      </Space>
+                    </div>
+                  </Popover>
+
+                  <Popover content={<div>No product in cart</div>}>
+                    <div className="flex flex-row items-center gap-2">
+                      <ShoppingCartOutlined className="text-[34px]" />
+                      <Space direction="vertical" className="!gap-0">
+                        <span className="text-[18px] font-medium">Cart</span>
+                        <span className="text-[14px] text-gray-500">$100</span>
+                      </Space>
+                    </div>
+                  </Popover>
                 </div>
               </div>
             </div>
@@ -90,20 +98,28 @@ const MainHeader = () => {
           {/* Hide on mobile */}
           <Col xs={0} md={10}>
             <div className="h-full flex flex-row items-center justify-end gap-10">
-              <div className="flex flex-row items-center gap-4">
-                <HeartOutlined className="text-[34px]" />
-                <Space direction="vertical" className="!gap-0">
-                  <span className="text-[18px] font-medium">Wishlist</span>
-                  <span className="text-[14px] text-gray-500">110</span>
-                </Space>
-              </div>
-              <div className="flex flex-row items-center gap-4">
-                <ShoppingCartOutlined className="text-[34px]" />
-                <Space direction="vertical" className="!gap-0">
-                  <span className="text-[18px] font-medium">Cart</span>
-                  <span className="text-[14px] text-gray-500">$100</span>
-                </Space>
-              </div>
+              <Popover content={<div>No wishlist</div>} placement="bottomRight">
+                <div className="flex flex-row items-center gap-4">
+                  <HeartOutlined className="text-[34px]" />
+                  <Space direction="vertical" className="!gap-0">
+                    <span className="text-[18px] font-medium">Wishlist</span>
+                    <span className="text-[14px] text-gray-500">110</span>
+                  </Space>
+                </div>
+              </Popover>
+
+              <Popover
+                content={<div>No product in cart</div>}
+                placement="bottomRight"
+              >
+                <div className="flex flex-row items-center gap-4">
+                  <ShoppingCartOutlined className="text-[34px]" />
+                  <Space direction="vertical" className="!gap-0">
+                    <span className="text-[18px] font-medium">Cart</span>
+                    <span className="text-[14px] text-gray-500">$100</span>
+                  </Space>
+                </div>
+              </Popover>
             </div>
           </Col>
         </Row>

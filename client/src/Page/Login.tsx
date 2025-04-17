@@ -1,15 +1,14 @@
-import { Form, Input, Button, Typography } from "antd";
-import { useNavigate } from "react-router-dom";
 import { apiUser } from "@/api/apiConnect/user/apiUser";
-import { useState } from "react";
-import { toast } from "react-toastify";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import {
   setStatusLogin,
-  setUser,
   setStatusLogout,
+  setUser,
 } from "@/store/slices/authen/index";
-const { Title } = Typography;
+import { Button, Form, Input } from "antd";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const dispatch = useAppDispatch();
@@ -75,50 +74,77 @@ const Login = () => {
     );
   }
   return (
-    <div style={{ maxWidth: 400, margin: "auto", padding: "50px 0" }}>
-      <Title level={2} style={{ textAlign: "center", marginBottom: "20px" }}>
-        LOGIN
-      </Title>
-      <Form
-        name="login"
-        initialValues={{ remember: true }}
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
-        layout="vertical"
-        style={{
-          background: "#fff",
-          padding: "20px",
-          borderRadius: "8px",
-          boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
-        }}
-      >
-        <Form.Item
-          label="Email"
-          name="email"
-          rules={[{ required: true, message: "Please input your email!" }]}
+    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="w-full max-w-[500px] p-8">
+        <p
+          style={{ textAlign: "center", marginBottom: "20px" }}
+          className="text-blue-500 text-4xl font-bold"
         >
-          <Input size="large" />
-        </Form.Item>
-
-        <Form.Item
-          label="Password"
-          name="password"
-          rules={[{ required: true, message: "Please input your password!" }]}
+          SoaFStore
+        </p>
+        <p
+          className="text-2xl font-bold"
+          style={{ textAlign: "center", marginBottom: "20px" }}
         >
-          <Input.Password size="large" />
-        </Form.Item>
-
-        <Form.Item>
-          <Button
-            type="primary"
-            htmlType="submit"
-            size="large"
-            style={{ width: "100%" }}
+          Welcome back
+        </p>
+        <p
+          style={{ textAlign: "center", marginBottom: "20px" }}
+          className="text-gray-500"
+        >
+          Sign in to continue your experience
+        </p>
+        <Form
+          name="login"
+          initialValues={{ remember: true }}
+          onFinish={onFinish}
+          onFinishFailed={onFinishFailed}
+          layout="vertical"
+          style={{
+            background: "#fff",
+            padding: "24px",
+            borderRadius: "8px",
+            boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
+          }}
+        >
+          <Form.Item
+            label="Email"
+            name="email"
+            rules={[{ required: true, message: "Please input your email!" }]}
           >
-            Login
-          </Button>
-        </Form.Item>
-      </Form>
+            <Input
+              size="large"
+              prefix={<span className="text-gray-500">📧</span>}
+            />
+          </Form.Item>
+
+          <Form.Item
+            label="Password"
+            name="password"
+            rules={[{ required: true, message: "Please input your password!" }]}
+          >
+            <Input.Password
+              size="large"
+              prefix={<span className="text-gray-500">🔑</span>}
+            />
+          </Form.Item>
+
+          <Form.Item>
+            <Button
+              type="primary"
+              htmlType="submit"
+              size="large"
+              style={{ width: "100%" }}
+            >
+              Sign in
+            </Button>
+          </Form.Item>
+          <Form.Item className="text-center text-md">
+            Don't have an account?
+            <Link to="/register"> Sign up</Link>
+          </Form.Item>
+        </Form>
+      </div>
     </div>
   );
 };

@@ -31,7 +31,7 @@ const BlogDetail = () => {
   return (
     <div className="blog-detail">
       {/* header */}
-      <div className="blog-headerpy-16">
+      <div className="blog-header pb-16">
         <img
           src={blog_single_background}
           alt="blog"

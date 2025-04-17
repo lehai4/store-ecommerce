@@ -6,10 +6,9 @@ import {
   PhoneOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Button, Form, Input, Typography } from "antd";
-import { toast } from "react-toastify";
+import { Button, Form, Input } from "antd";
 import { useNavigate } from "react-router-dom";
-const { Title } = Typography;
+import { toast } from "react-toastify";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -28,32 +27,50 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-lg shadow-lg">
-        <div>
-          <Title level={2} className="text-center mb-6">
-            Đăng ký tài khoản
-          </Title>
-        </div>
-
+    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="w-full max-w-[500px] p-8">
+        <p
+          style={{ textAlign: "center", marginBottom: "20px" }}
+          className="text-blue-500 text-4xl font-bold"
+        >
+          SoaFStore
+        </p>
+        <p
+          className="text-2xl font-bold"
+          style={{ textAlign: "center", marginBottom: "20px" }}
+        >
+          Welcome back
+        </p>
+        <p
+          style={{ textAlign: "center", marginBottom: "20px" }}
+          className="text-gray-500"
+        >
+          Sign in to continue your experience
+        </p>
         <Form
           name="register"
           onFinish={onFinish}
           layout="vertical"
           size="large"
+          style={{
+            background: "#fff",
+            padding: "24px",
+            borderRadius: "8px",
+            boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
+          }}
         >
           <Form.Item
             name="name"
-            rules={[{ required: true, message: "Vui lòng nhập họ tên!" }]}
+            rules={[{ required: true, message: "Please enter your name!" }]}
           >
-            <Input prefix={<UserOutlined />} placeholder="Họ tên" />
+            <Input prefix={<UserOutlined />} placeholder="Name" />
           </Form.Item>
 
           <Form.Item
             name="email"
             rules={[
-              { required: true, message: "Vui lòng nhập email!" },
-              { type: "email", message: "Email không hợp lệ!" },
+              { required: true, message: "Please enter your email!" },
+              { type: "email", message: "Invalid email!" },
             ]}
           >
             <Input prefix={<MailOutlined />} placeholder="Email" />
@@ -62,25 +79,25 @@ const Register = () => {
           <Form.Item
             name="password"
             rules={[
-              { required: true, message: "Vui lòng nhập mật khẩu!" },
-              { min: 6, message: "Mật khẩu phải có ít nhất 6 ký tự!" },
+              { required: true, message: "Please enter your password!" },
+              { min: 6, message: "Password must be at least 6 characters!" },
             ]}
           >
-            <Input.Password prefix={<LockOutlined />} placeholder="Mật khẩu" />
+            <Input.Password prefix={<LockOutlined />} placeholder="Password" />
           </Form.Item>
 
           <Form.Item
             name="confirmPassword"
             dependencies={["password"]}
             rules={[
-              { required: true, message: "Vui lòng xác nhận mật khẩu!" },
+              { required: true, message: "Please confirm your password!" },
               ({ getFieldValue }) => ({
                 validator(_, value) {
                   if (!value || getFieldValue("password") === value) {
                     return Promise.resolve();
                   }
                   return Promise.reject(
-                    new Error("Mật khẩu xác nhận không khớp!")
+                    new Error("Password confirmation does not match!")
                   );
                 },
               }),
@@ -88,40 +105,40 @@ const Register = () => {
           >
             <Input.Password
               prefix={<LockOutlined />}
-              placeholder="Xác nhận mật khẩu"
+              placeholder="Confirm password"
             />
           </Form.Item>
 
           <Form.Item
             name="phone"
             rules={[
-              { required: true, message: "Vui lòng nhập số điện thoại!" },
+              { required: true, message: "Please enter your phone number!" },
               {
                 pattern: /^[0-9]{10}$/,
-                message: "Số điện thoại không hợp lệ!",
+                message: "Invalid phone number!",
               },
             ]}
           >
-            <Input prefix={<PhoneOutlined />} placeholder="Số điện thoại" />
+            <Input prefix={<PhoneOutlined />} placeholder="Phone number" />
           </Form.Item>
 
           <Form.Item
             name="address"
-            rules={[{ required: true, message: "Vui lòng nhập địa chỉ!" }]}
+            rules={[{ required: true, message: "Please enter your address!" }]}
           >
-            <Input prefix={<HomeOutlined />} placeholder="Địa chỉ" />
+            <Input prefix={<HomeOutlined />} placeholder="Address" />
           </Form.Item>
 
           <Form.Item>
             <Button type="primary" htmlType="submit" className="w-full">
-              Đăng ký
+              Sign up
             </Button>
           </Form.Item>
 
           <div className="text-center">
-            Đã có tài khoản?
+            You have an account?
             <a href="/login" className="text-blue-600 hover:text-blue-800 ml-1">
-              Đăng nhập ngay
+              Sign in
             </a>
           </div>
         </Form>

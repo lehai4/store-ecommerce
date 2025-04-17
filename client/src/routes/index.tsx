@@ -108,8 +108,7 @@ export function AppRoutes() {
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+
         <Route path="/blogs" element={<Blog />} />
         <Route path="/blog/:id" element={<BlogDetail />} />
         {/* Add more routes as needed */}
@@ -124,6 +123,8 @@ export function AppRoutes() {
           <Route path="*" element={<NotFound />} />
         </Route>
       </Route>
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
     </Routes>
   );
 }

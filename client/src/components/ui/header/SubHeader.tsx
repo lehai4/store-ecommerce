@@ -7,7 +7,7 @@ import {
   UserAddOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Button, Divider, Space } from "antd";
+import { Button, Divider, Popover, Space, Typography } from "antd";
 import { Link } from "react-router-dom";
 const SubHeader = () => {
   const { user } = useAppSelector((state) => state.authen);
@@ -36,10 +36,27 @@ const SubHeader = () => {
             <Space direction="horizontal">
               {user ? (
                 <div className="flex flex-row items-center gap-2">
-                  <span className="flex flex-row items-center gap-2 cursor-pointer">
-                    <UserOutlined />
-                    {user.name}
-                  </span>
+                  <Popover
+                    placement="bottomRight"
+                    content={
+                      <Space direction="vertical">
+                        <Typography.Text className="text-gray-500 text-sm">
+                          <strong>Name:</strong> {user.name}
+                        </Typography.Text>
+                        <Typography.Text className="text-gray-500 text-sm">
+                          <strong>Phone:</strong> {user.phone}
+                        </Typography.Text>
+                        <Typography.Text className="text-gray-500 text-sm">
+                          <strong>Email:</strong> {user.email}
+                        </Typography.Text>
+                      </Space>
+                    }
+                  >
+                    <span className="flex flex-row items-center gap-2 cursor-pointer">
+                      <UserOutlined />
+                      {user.name}
+                    </span>
+                  </Popover>
                   <Button
                     type="link"
                     icon={<LogoutOutlined />}
