@@ -23,6 +23,9 @@ importers:
       axios:
         specifier: ^1.8.4
         version: 1.8.4
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
       path:
         specifier: ^0.12.7
         version: 0.12.7

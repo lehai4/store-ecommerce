@@ -312,25 +312,31 @@ const ProductsAdmin = () => {
         </div>
       )}
 
-      <div className="flex flex-col gap-4 h-full">
+      <div className="h-full">
         <h2 className="text-2xl font-bold">Danh sách sản phẩm</h2>
-        <Button type="primary" className="w-fit" onClick={() => setOpen(true)}>
+        <Button
+          type="primary"
+          className="w-fit my-5"
+          onClick={() => setOpen(true)}
+        >
           Thêm sản phẩm
         </Button>
-        <Table
-          columns={columns}
-          dataSource={products.map((product) => ({
-            ...product,
-            key: product._id,
-          }))}
-          pagination={false}
-          loading={loading}
-          scroll={{ x: "100%", y: "100% " }}
-          locale={{
-            emptyText: <span>Không có dữ liệu</span>,
-          }}
-          bordered
-        />
+        <div>
+          <Table
+            columns={columns}
+            dataSource={products.map((product) => ({
+              ...product,
+              key: product._id,
+            }))}
+            pagination={false}
+            loading={loading}
+            scroll={{ x: "100%", y: 120 * 5 }}
+            locale={{
+              emptyText: <span>Không có dữ liệu</span>,
+            }}
+            bordered
+          />
+        </div>
       </div>
       <Modal
         title="Thêm sản phẩm"

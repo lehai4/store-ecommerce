@@ -1,4 +1,4 @@
-const { User } = require("../../models/index");
+const { User, Product } = require("../../models/index");
 const bcrypt = require("bcrypt");
 const controllerForUser = {
   login: async (req, res) => {
@@ -28,10 +28,20 @@ const controllerForUser = {
         });
       }
 
+      const userData = {
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        phone: user.phone,
+        address: user.address,
+        roleId: user.roleId,
+        status: user.status,
+      };
+
       return res.status(200).json({
         success: true,
         message: "Đăng nhập thành công",
-        data: user,
+        data: userData,
       });
     } catch (error) {
       res.status(500).json({
@@ -63,6 +73,38 @@ const controllerForUser = {
         success: true,
         message: "Đăng ký thành công",
         data: newUser,
+      });
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        message: error.message,
+      });
+    }
+  },
+
+  // Top Deals
+  getTopDeals: async (req, res) => {
+    try {
+      const { type, page = 1, limit = 10 } = req.query;
+
+      const query = type ? { type: type.toLowerCase() } : {};
+
+      const skip = (parseInt(page) - 1) * parseInt(limit);
+
+      const [topDeals, totalItems] = await Promise.all([
+        Product.find(query).skip(skip).limit(parseInt(limit)),
+        Product.countDocuments(query),
+      ]);
+
+      res.status(200).json({
+        success: true,
+        data: topDeals,
+        pagination: {
+          totalItems,
+          currentPage: parseInt(page),
+          totalPages: Math.ceil(totalItems / parseInt(limit)),
+          limit: parseInt(limit),
+        },
       });
     } catch (error) {
       res.status(500).json({

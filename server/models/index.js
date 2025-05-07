@@ -48,6 +48,8 @@ const productSchema = new mongoose.Schema(
     color: String,
     size: String,
     quantity: Number,
+    type: { type: String, default: "featured" },
+    entered: { type: Date, default: Date.now },
     image: String,
     description: String,
     status: { type: Boolean, default: true },

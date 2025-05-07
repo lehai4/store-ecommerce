@@ -20,4 +20,13 @@ export const apiUser = {
       throw error;
     }
   },
+  getTopDeals: async (query: URLSearchParams) => {
+    try {
+      const response = await http.get(`/users/top-deals?${query}`);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  },
 };

@@ -40,6 +40,8 @@ export interface Product {
   color: string;
   size: string;
   quantity: number;
+  type: string;
+  entered: Date;
   image: string;
   description: string;
   status: boolean;

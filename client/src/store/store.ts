@@ -10,6 +10,7 @@ import {
   REGISTER,
 } from "redux-persist";
 import authenSlice from "./slices/authen/index";
+import subscribeSlice from "./slices/subscribe/index";
 const persistConfig = {
   key: "root",
   storage,
@@ -18,6 +19,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   authen: authenSlice,
+  subscribe: subscribeSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

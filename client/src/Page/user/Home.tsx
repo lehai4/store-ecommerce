@@ -1,5 +1,6 @@
 import { mockAPI } from "@/api/mockAPI";
 import banner from "@/assets/img/banner_background.jpg";
+import DealsProduct from "@/components/ui/products/DealsProduct";
 import { Image, Space } from "antd";
 import SendEmail from "./SendEmail";
 const Home = () => {
@@ -28,7 +29,7 @@ const Home = () => {
               {characteristics.map((characteristic) => (
                 <div
                   key={characteristic.id}
-                  className="rounded-md shadow-md border-[#e8e8e8] border p-8 hover:shadow-lg transition-all duration-300"
+                  className="rounded-md shadow-md border-[#e8e8e8] border p-6 hover:shadow-lg transition-all duration-300"
                 >
                   <Space direction="horizontal" size={16}>
                     <Image
@@ -38,10 +39,10 @@ const Home = () => {
                       className="w-12 h-12"
                     />
                     <div className="flex flex-col gap-2">
-                      <h2 className="text-xl font-bold">
+                      <h2 className="text-lg font-bold">
                         {characteristic.title}
                       </h2>
-                      <p className="text-gray-500">
+                      <p className="text-sm text-gray-500">
                         {characteristic.description}
                       </p>
                     </div>
@@ -52,7 +53,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="products"></div>
+      <DealsProduct />
       <SendEmail />
     </main>
   );
