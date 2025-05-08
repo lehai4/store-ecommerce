@@ -17,7 +17,7 @@ const Navbar = () => {
             {/* Menu */}
             <Menu
               mode="horizontal"
-              className="h-full !text-[18px]"
+              className="h-full !text-[14px] md:!text-[16px] lg:!text-[18px]"
               selectedKeys={[location.pathname]}
               onClick={(e) => {
                 navigate(e.key);

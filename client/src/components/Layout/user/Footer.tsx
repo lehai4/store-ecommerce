@@ -29,16 +29,16 @@ const Footer = () => {
               </p>
               <div className="flex flex-row gap-5 cursor-pointer ">
                 <p className="text-2xl">
-                  <FacebookOutlined className="hover:text-blue-500 hover:bg-blue-500 hover:transition-all hover:duration-300" />
+                  <FacebookOutlined className="hover:text-blue-500 hover:opacity-70 hover:transition-all hover:duration-300" />
                 </p>
                 <p className="text-2xl">
-                  <InstagramOutlined className="hover:text-blue-500 hover:bg-blue-500 hover:transition-all hover:duration-300" />
+                  <InstagramOutlined className="hover:text-blue-500 hover:opacity-70 hover:transition-all hover:duration-300" />
                 </p>
                 <p className="text-2xl">
-                  <GoogleOutlined className="hover:text-blue-500 hover:bg-blue-500 hover:transition-all hover:duration-300" />
+                  <GoogleOutlined className="hover:text-blue-500 hover:opacity-70 hover:transition-all hover:duration-300" />
                 </p>
                 <p className="text-2xl">
-                  <TwitterOutlined className="hover:text-blue-500 hover:bg-blue-500 hover:transition-all hover:duration-300" />
+                  <TwitterOutlined className="hover:text-blue-500 hover:opacity-70 hover:transition-all hover:duration-300" />
                 </p>
               </div>
             </div>

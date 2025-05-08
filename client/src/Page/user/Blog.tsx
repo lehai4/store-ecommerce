@@ -1,10 +1,9 @@
 import { mockAPI } from "@/api/mockAPI";
-import { Link } from "react-router-dom";
-import { Select, Input, Pagination, Spin } from "antd";
-import { useState, useEffect } from "react";
-import { LoadingOutlined } from "@ant-design/icons";
-import SendEmail from "./SendEmail";
 import shop_background from "@/assets/img/shop_background.jpg";
+import { Input, Pagination, Select, Skeleton } from "antd";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import SendEmail from "./SendEmail";
 const Blog = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [blogs, setBlogs] = useState(mockAPI.blogs);
@@ -19,7 +18,7 @@ const Blog = () => {
       setTimeout(() => {
         setBlogs(mockAPI.blogs);
         setIsLoading(false);
-      }, 3000);
+      }, 2000);
     } else {
       setIsLoading(true);
       setTimeout(() => {
@@ -27,7 +26,7 @@ const Blog = () => {
           mockAPI.blogs.filter((blog) => blog.category === selectedCategory)
         );
         setIsLoading(false);
-      }, 3000);
+      }, 2000);
     }
     setFeaturedBlogs(mockAPI.blogs.slice(0, 3));
   }, [selectedCategory]);
@@ -115,7 +114,36 @@ const Blog = () => {
               <div className="blog-content py-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {isLoading ? (
-                    <Spin indicator={<LoadingOutlined spin />} size="large" />
+                    <>
+                      {Array(3)
+                        .fill(0)
+                        .map((_, index) => (
+                          <div
+                            key={index}
+                            className="col-span-1 bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300"
+                          >
+                            <div className="w-full flex justify-center">
+                              <Skeleton.Image
+                                active
+                                style={{ height: 190 }}
+                                className="!w-full"
+                              />
+                            </div>
+                            <div className="w-full flex justify-center gap-4 my-4 px-4">
+                              <Skeleton.Avatar
+                                active
+                                size={"default"}
+                                shape={"circle"}
+                              />
+                              <Skeleton
+                                active
+                                paragraph={{ rows: 2 }}
+                                className="!w-full"
+                              />
+                            </div>
+                          </div>
+                        ))}
+                    </>
                   ) : (
                     currentBlogs.map((blog) => (
                       <div

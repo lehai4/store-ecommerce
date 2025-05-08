@@ -16,6 +16,7 @@ const SendEmail = () => {
     } else {
       if (values === "") {
         toast.warning("Please enter your email");
+        return;
       }
       form.resetFields();
       toast.success("Subscribe successfully");
@@ -31,7 +32,7 @@ const SendEmail = () => {
     <div className="send-email">
       <div className="bg-gray-100 py-16">
         <div className="container mx-auto text-center">
-          <h2 className="text-[28px] font-bold mb-4">
+          <h2 className="text-[24px] sm:text-[24px] md:text-[26px] lg:text-[28px] font-bold mb-4">
             Subscribe to our Newsletter
           </h2>
           <p className="text-gray-600 mb-8">
@@ -48,12 +49,14 @@ const SendEmail = () => {
                     placeholder="Enter your email"
                     enterButton="Unsubscribe"
                     size="large"
+                    type="submit"
                     onSearch={(value) => onFinish(value)}
                   />
                 ) : (
                   <Input.Search
                     placeholder="Enter your email"
                     enterButton="Subscribe"
+                    type="submit"
                     size="large"
                     onSearch={(value) => onFinish(value)}
                   />

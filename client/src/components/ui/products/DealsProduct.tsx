@@ -105,14 +105,16 @@ const DealsProduct = () => {
                                       <div className="w-full flex justify-center">
                                         <Skeleton.Image
                                           active
-                                          style={{ width: 120, height: 120 }}
+                                          style={{ height: 120 }}
+                                          className="!w-full"
                                         />
                                       </div>
                                       <div className="w-full flex justify-center mt-4">
                                         <Skeleton
                                           active
                                           paragraph={{ rows: 2 }}
-                                          style={{ width: 120 }}
+                                          // style={{ width: 120 }}
+                                          className="!w-full"
                                         />
                                       </div>
                                     </div>
